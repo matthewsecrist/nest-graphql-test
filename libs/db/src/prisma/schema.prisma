@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator kysely {
+  provider     = "prisma-kysely"
+  output       = "../src/db"
+  fileName     = "types.ts"
+  enumFileName = "enums.ts"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(dbgenerated("gen_random_uuid()"))
+  email    String @unique
+  username String @unique
+
+  posts Post[]
+}
+
+model Post {
+  id        String  @id @default(dbgenerated("gen_random_uuid()"))
+  body      String
+  published Boolean
+  votes     Int     @default(0)
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+}
