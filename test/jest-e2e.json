@@ -12,6 +12,10 @@
   },
   "moduleNameMapper": {
     "@app/db/(.*)": "<rootDir>/../libs/db/src/$1",
-    "@app/db": "<rootDir>/../libs/db/src"
+    "@app/db": "<rootDir>/../libs/db/src",
+    "@app/users/(.*)": "<rootDir>/../libs/users/src/$1",
+    "@app/users": "<rootDir>/../libs/users/src",
+    "@app/posts/(.*)": "<rootDir>/../libs/posts/src/$1",
+    "@app/posts": "<rootDir>/../libs/posts/src"
   }
 }

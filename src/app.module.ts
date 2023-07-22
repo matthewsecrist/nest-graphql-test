@@ -1,7 +1,35 @@
+import { PostsModule } from './posts/posts.module';
+import { UsersModule } from './users/users.module';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { PostgresDialect } from 'kysely';
+import { KyselyModule } from 'nestjs-kysely';
+import { join } from 'path';
+import { Pool } from 'pg';
 
 @Module({
-  imports: [],
+  imports: [
+    KyselyModule.forRoot({
+      dialect: new PostgresDialect({
+        pool: new Pool({
+          database: 'postgres',
+          host: 'postgres',
+          user: 'postgres',
+          port: 5432,
+          max: 10,
+        }),
+      }),
+    }),
+    UsersModule,
+    PostsModule,
+
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
+    }),
+  ],
   controllers: [],
   providers: [],
 })

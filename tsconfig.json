@@ -23,6 +23,18 @@
       ],
       "@app/db/*": [
         "libs/db/src/*"
+      ],
+      "@app/users": [
+        "libs/users/src"
+      ],
+      "@app/users/*": [
+        "libs/users/src/*"
+      ],
+      "@app/posts": [
+        "libs/posts/src"
+      ],
+      "@app/posts/*": [
+        "libs/posts/src/*"
       ]
     }
   }

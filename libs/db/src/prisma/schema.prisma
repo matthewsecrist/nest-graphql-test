@@ -3,9 +3,10 @@
 
 generator kysely {
   provider     = "prisma-kysely"
-  output       = "../src/db"
+  output       = "../schema"
   fileName     = "types.ts"
   enumFileName = "enums.ts"
+  readOnlyIds  = true
 }
 
 datasource db {

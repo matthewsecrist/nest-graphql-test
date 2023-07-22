@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  createPost(authorId: String!, body: String!): Post!
+  createUser(email: String!, username: String!): User!
+  upvotePost(id: String!): Post!
+}
+
+type Post {
+  author: User!
+  body: String!
+  id: ID!
+  published: Boolean!
+  votes: Float!
+}
+
+type Query {
+  post(id: String!): Post!
+  user(id: String!): User!
+  users: [User!]!
+}
+
+type User {
+  email: String!
+  id: ID!
+  posts: [Post!]!
+  username: String!
+}
