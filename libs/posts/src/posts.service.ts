@@ -10,8 +10,12 @@ export class PostsService {
     @Inject(KYSELY_MODULE_CONNECTION_TOKEN) private readonly db: Kysely<DB>,
   ) {}
 
-  async findAll() {
-    return await this.db.selectFrom('Post').selectAll().execute();
+  async findAll(authorId?: string) {
+    return await this.db
+      .selectFrom('Post')
+      .selectAll()
+      .$if(!!authorId, (qb) => qb.where('Post.authorId', '=', authorId))
+      .execute();
   }
 
   async getById(id: string) {

@@ -27,7 +27,8 @@
         "netcorext.uuid-generator",
         "mtxr.sqltools",
         "mtxr.sqltools-driver-pg",
-        "Prisma.prisma"
+        "Prisma.prisma",
+        "apollographql.vscode-apollo"
       ],
       "settings": {
         "editor.formatOnSave": true,

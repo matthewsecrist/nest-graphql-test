@@ -4,6 +4,12 @@ import { Inject } from '@nestjs/common';
 import { InsertObject, Kysely, UpdateObject } from 'kysely';
 import { KYSELY_MODULE_CONNECTION_TOKEN } from 'nestjs-kysely';
 
+interface FindOneOptions {
+  id?: string;
+  email?: string;
+  username?: string;
+}
+
 @Injectable()
 export class UsersService {
   constructor(
@@ -14,12 +20,30 @@ export class UsersService {
     return await this.db.selectFrom('User').selectAll().execute();
   }
 
-  async getById(id: string) {
+  async findOne(opts: FindOneOptions) {
+    if (!opts.id && !opts.email && !opts.username) {
+      throw new Error('Requires at least one parameter');
+    }
+
     return await this.db
       .selectFrom('User')
       .selectAll()
-      .where('id', '=', id)
+      .$if(!!opts.id, (qb) => qb.where('id', '=', opts.id))
+      .$if(!!opts.email, (qb) => qb.where('email', '=', opts.email))
+      .$if(!!opts.username, (qb) => qb.where('username', '=', opts.username))
       .executeTakeFirst();
+  }
+
+  async getById(id: string) {
+    return await this.findOne({ id });
+  }
+
+  async getByUsername(username: string) {
+    return await this.findOne({ username });
+  }
+
+  async getByEmail(email: string) {
+    return await this.findOne({ email });
   }
 
   async create(params: InsertObject<DB, 'User'>) {
@@ -27,7 +51,7 @@ export class UsersService {
       .insertInto('User')
       .values(params)
       .returningAll()
-      .execute();
+      .executeTakeFirstOrThrow();
   }
 
   async update(id: string, params: UpdateObject<DB, 'User'>) {
@@ -35,7 +59,7 @@ export class UsersService {
       .updateTable('User')
       .set(params)
       .where('id', '=', id)
-      .execute();
+      .executeTakeFirstOrThrow();
   }
 
   async delete(id: string) {

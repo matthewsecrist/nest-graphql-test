@@ -3,7 +3,7 @@ import { Post } from '../../posts/models/post.model';
 
 @ObjectType()
 export class User {
-  @Field((type) => ID)
+  @Field(() => ID)
   id: string;
 
   @Field()
@@ -12,6 +12,6 @@ export class User {
   @Field()
   username: string;
 
-  @Field((type) => [Post])
+  @Field(() => [Post])
   posts: Post[];
 }

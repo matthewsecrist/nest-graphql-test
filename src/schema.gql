@@ -2,14 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateUserInput {
+  email: String!
+  username: String!
+}
+
 type Mutation {
   createPost(authorId: String!, body: String!): Post!
-  createUser(email: String!, username: String!): User!
-  upvotePost(id: String!): Post!
+  createUser(createUserData: CreateUserInput!): User!
 }
 
 type Post {
   author: User!
+  authorId: String!
   body: String!
   id: ID!
   published: Boolean!
@@ -18,7 +23,8 @@ type Post {
 
 type Query {
   post(id: String!): Post!
-  user(id: String!): User!
+  posts(authorId: String): [Post!]!
+  user(email: String, id: String, username: String): User!
   users: [User!]!
 }
 

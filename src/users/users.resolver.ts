@@ -11,6 +11,8 @@ import { Post } from '../posts/models/post.model';
 import { UsersService } from '@app/users';
 import { PostsService } from '@app/posts';
 import { NotFoundException } from '@nestjs/common';
+import { GetUserArgs } from './dto/get-user.args';
+import { CreateUserInput } from './dto/create-user.input';
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -25,11 +27,11 @@ export class UsersResolver {
   }
 
   @Query(() => User)
-  async user(@Args('id', { type: () => String }) id: string) {
-    const user = await this.usersService.getById(id);
+  async user(@Args() args: GetUserArgs) {
+    const user = await this.usersService.findOne(args);
 
     if (!user) {
-      throw new NotFoundException(id);
+      throw new NotFoundException();
     }
 
     return user;
@@ -41,13 +43,7 @@ export class UsersResolver {
   }
 
   @Mutation(() => User)
-  async createUser(
-    @Args({ name: 'email', type: () => String }) email: string,
-    @Args({ name: 'username', type: () => String }) username: string,
-  ) {
-    return await this.usersService.create({
-      email,
-      username,
-    });
+  async createUser(@Args('createUserData') args: CreateUserInput) {
+    return await this.usersService.create(args);
   }
 }

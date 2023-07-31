@@ -18,12 +18,19 @@ export class PostsResolver {
     private readonly postsService: PostsService,
   ) {}
 
+  @Query(() => [Post])
+  async posts(
+    @Args('authorId', { type: () => String, nullable: true }) authorId?: string,
+  ) {
+    return await this.postsService.findAll(authorId);
+  }
+
   @Query(() => Post)
   async post(@Args('id', { type: () => String }) id: string) {
     const post = await this.postsService.getById(id);
 
     if (!post) {
-      throw new NotFoundException(id);
+      throw new NotFoundException();
     }
 
     return post;
@@ -31,7 +38,7 @@ export class PostsResolver {
 
   @ResolveField()
   async author(@Parent() post: Post) {
-    return this.usersService.getById(post.author.id);
+    return this.usersService.getById(post.authorId);
   }
 
   @Mutation(() => Post)

@@ -8,6 +8,8 @@ import { KyselyModule } from 'nestjs-kysely';
 import { join } from 'path';
 import { Pool } from 'pg';
 
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+
 @Module({
   imports: [
     KyselyModule.forRoot({
@@ -26,6 +28,8 @@ import { Pool } from 'pg';
 
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
     }),
