@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { User } from '../../users/models/users.model';
+import { User } from './users.model';
+import { Category } from './categories.model';
 
 @ObjectType()
 export class Post {
@@ -20,4 +21,7 @@ export class Post {
 
   @Field(() => User)
   author: User;
+
+  @Field(() => [Category])
+  categories: Category[];
 }

@@ -6,8 +6,8 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { User } from './models/users.model';
-import { Post } from '../posts/models/post.model';
+import { User } from '../models/users.model';
+import { Post } from '../models/post.model';
 import { UsersService } from '@app/users';
 import { PostsService } from '@app/posts';
 import { NotFoundException } from '@nestjs/common';

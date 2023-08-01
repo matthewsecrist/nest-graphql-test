@@ -8,17 +8,21 @@ import {
 } from '@nestjs/graphql';
 import { UsersService } from '@app/users';
 import { PostsService } from '@app/posts';
-import { Post } from './models/post.model';
+import { Post } from '../models/post.model';
 import { NotFoundException } from '@nestjs/common';
+import { Category } from 'src/models/categories.model';
+import { CategoriesService } from '@app/categories';
+import { User } from 'src/models/users.model';
 
 @Resolver(() => Post)
 export class PostsResolver {
   constructor(
     private readonly usersService: UsersService,
     private readonly postsService: PostsService,
+    private readonly categoriesService: CategoriesService,
   ) {}
 
-  @Query(() => [Post])
+  @Query(() => [Post], { name: 'posts' })
   async posts(
     @Args('authorId', { type: () => String, nullable: true }) authorId?: string,
   ) {
@@ -36,7 +40,13 @@ export class PostsResolver {
     return post;
   }
 
-  @ResolveField()
+  @ResolveField('categories', () => [Category])
+  async categories(@Parent() post: Post) {
+    console.log('fetch categories for post: ', post.id);
+    return this.categoriesService.fetchCategoriesByPostId(post.id);
+  }
+
+  @ResolveField('author', () => User)
   async author(@Parent() post: Post) {
     return this.usersService.getById(post.authorId);
   }

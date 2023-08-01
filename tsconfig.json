@@ -35,6 +35,12 @@
       ],
       "@app/posts/*": [
         "libs/posts/src/*"
+      ],
+      "@app/categories": [
+        "libs/categories/src"
+      ],
+      "@app/categories/*": [
+        "libs/categories/src/*"
       ]
     }
   }

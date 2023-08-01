@@ -16,6 +16,8 @@
     "@app/users/(.*)": "<rootDir>/../libs/users/src/$1",
     "@app/users": "<rootDir>/../libs/users/src",
     "@app/posts/(.*)": "<rootDir>/../libs/posts/src/$1",
-    "@app/posts": "<rootDir>/../libs/posts/src"
+    "@app/posts": "<rootDir>/../libs/posts/src",
+    "@app/categories/(.*)": "<rootDir>/../libs/categories/src/$1",
+    "@app/categories": "<rootDir>/../libs/categories/src"
   }
 }

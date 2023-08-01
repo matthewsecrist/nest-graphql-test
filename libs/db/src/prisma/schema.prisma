@@ -19,7 +19,18 @@ model User {
   email    String @unique
   username String @unique
 
-  posts Post[]
+  posts      Post[]
+  following  Friendships[] @relation("following")
+  followedBy Friendships[] @relation("followedBy")
+}
+
+model Friendships {
+  follower   User   @relation("following", fields: [followerId], references: [id])
+  followerId String
+  followee   User   @relation("followedBy", fields: [followeeId], references: [id])
+  followeeId String
+
+  @@id([followerId, followeeId])
 }
 
 model Post {
@@ -28,6 +39,23 @@ model Post {
   published Boolean
   votes     Int     @default(0)
 
-  author   User   @relation(fields: [authorId], references: [id])
-  authorId String
+  author         User             @relation(fields: [authorId], references: [id])
+  authorId       String
+  PostCategories PostCategories[]
+}
+
+model Category {
+  id             String           @id @default(dbgenerated("gen_random_uuid()"))
+  name           String
+  PostCategories PostCategories[]
+}
+
+model PostCategories {
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  @@id([postId, categoryId])
 }

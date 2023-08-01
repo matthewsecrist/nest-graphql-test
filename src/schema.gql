@@ -2,12 +2,24 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AssociateCategoryResponseDTO {
+  isSuccess: Boolean!
+}
+
+type Category {
+  id: ID!
+  name: String!
+  posts: [Post!]!
+}
+
 input CreateUserInput {
   email: String!
   username: String!
 }
 
 type Mutation {
+  associateCategoryResponse(categoryId: String!, postId: String!): AssociateCategoryResponseDTO!
+  createCategory(name: String!): Category!
   createPost(authorId: String!, body: String!): Post!
   createUser(createUserData: CreateUserInput!): User!
 }
@@ -16,12 +28,15 @@ type Post {
   author: User!
   authorId: String!
   body: String!
+  categories: [Category!]!
   id: ID!
   published: Boolean!
   votes: Float!
 }
 
 type Query {
+  categories: [Category!]!
+  category(categoryId: String!): Category!
   post(id: String!): Post!
   posts(authorId: String): [Post!]!
   user(email: String, id: String, username: String): User!

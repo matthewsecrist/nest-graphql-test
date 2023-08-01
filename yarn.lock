@@ -4622,10 +4622,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nestjs-kysely@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/nestjs-kysely/-/nestjs-kysely-0.1.4.tgz#92f21a492b90c36db77e82b661ad5e90a57c3a52"
-  integrity sha512-I19T8n8OHoy9f1rJa4CsU2SJblNoBfEVcp5DhlUlGAvkOVI9Z/WDPNd4KrVJ0JAheEoI7mmExtUK9gHU6py5jQ==
+nestjs-kysely@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/nestjs-kysely/-/nestjs-kysely-0.1.5.tgz#9c2a35fd2a3012b20eddbb64bf0af65323a9da2e"
+  integrity sha512-z35tCeJNa8BIrISCUjd4SgPbEQAtlAh+p5PHsUFK7VUBecXI5JHZHW83BBXSNo0OfLV+CRCq+u32vFB2cCWDTw==
 
 new-github-issue-url@0.2.1:
   version "0.2.1"

@@ -33,6 +33,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/posts/tsconfig.lib.json"
       }
+    },
+    "categories": {
+      "type": "library",
+      "root": "libs/categories",
+      "entryFile": "index",
+      "sourceRoot": "libs/categories/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/categories/tsconfig.lib.json"
+      }
     }
   }
 }

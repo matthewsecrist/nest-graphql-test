@@ -9,6 +9,7 @@ import { join } from 'path';
 import { Pool } from 'pg';
 
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
     }),
     UsersModule,
     PostsModule,
+    CategoriesModule,
 
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

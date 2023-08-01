@@ -28,7 +28,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "graphql": "^16.7.1",
     "kysely": "^0.26.1",
-    "nestjs-kysely": "^0.1.4",
+    "nestjs-kysely": "^0.1.5",
     "pg": "^8.11.1",
     "prisma-kysely": "^1.5.0",
     "reflect-metadata": "^0.1.13",
@@ -81,7 +81,8 @@
     "moduleNameMapper": {
       "^@app/db(|/.*)$": "<rootDir>/libs/db/src/$1",
       "^@app/users(|/.*)$": "<rootDir>/libs/users/src/$1",
-      "^@app/posts(|/.*)$": "<rootDir>/libs/posts/src/$1"
+      "^@app/posts(|/.*)$": "<rootDir>/libs/posts/src/$1",
+      "^@app/categories(|/.*)$": "<rootDir>/libs/categories/src/$1"
     }
   },
   "prisma": {

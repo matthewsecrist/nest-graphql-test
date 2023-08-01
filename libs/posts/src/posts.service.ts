@@ -1,14 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { DB } from '@app/db';
-import { Inject } from '@nestjs/common';
 import { InsertObject, Kysely, UpdateObject } from 'kysely';
-import { KYSELY_MODULE_CONNECTION_TOKEN } from 'nestjs-kysely';
+import { InjectKysely } from 'nestjs-kysely';
 
 @Injectable()
 export class PostsService {
-  constructor(
-    @Inject(KYSELY_MODULE_CONNECTION_TOKEN) private readonly db: Kysely<DB>,
-  ) {}
+  constructor(@InjectKysely() private readonly db: Kysely<DB>) {}
 
   async findAll(authorId?: string) {
     return await this.db
