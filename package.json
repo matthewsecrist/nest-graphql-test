@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.8.0",
+    "@faker-js/faker": "^8.0.2",
     "@nestjs/apollo": "^12.0.7",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
@@ -38,6 +39,7 @@
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
+    "@prisma/client": "^5.0.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
@@ -82,10 +84,12 @@
       "^@app/db(|/.*)$": "<rootDir>/libs/db/src/$1",
       "^@app/users(|/.*)$": "<rootDir>/libs/users/src/$1",
       "^@app/posts(|/.*)$": "<rootDir>/libs/posts/src/$1",
-      "^@app/categories(|/.*)$": "<rootDir>/libs/categories/src/$1"
+      "^@app/categories(|/.*)$": "<rootDir>/libs/categories/src/$1",
+      "^@app/friendships(|/.*)$": "<rootDir>/libs/friendships/src/$1"
     }
   },
   "prisma": {
-    "schema": "libs/db/src/prisma/schema.prisma"
+    "schema": "libs/db/src/prisma/schema.prisma",
+    "seed": "ts-node scripts/seed.ts"
   }
 }

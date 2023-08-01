@@ -42,6 +42,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/categories/tsconfig.lib.json"
       }
+    },
+    "friendships": {
+      "type": "library",
+      "root": "libs/friendships",
+      "entryFile": "index",
+      "sourceRoot": "libs/friendships/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/friendships/tsconfig.lib.json"
+      }
     }
   }
 }

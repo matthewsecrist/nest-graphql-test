@@ -18,6 +18,8 @@
     "@app/posts/(.*)": "<rootDir>/../libs/posts/src/$1",
     "@app/posts": "<rootDir>/../libs/posts/src",
     "@app/categories/(.*)": "<rootDir>/../libs/categories/src/$1",
-    "@app/categories": "<rootDir>/../libs/categories/src"
+    "@app/categories": "<rootDir>/../libs/categories/src",
+    "@app/friendships/(.*)": "<rootDir>/../libs/friendships/src/$1",
+    "@app/friendships": "<rootDir>/../libs/friendships/src"
   }
 }

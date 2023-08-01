@@ -41,6 +41,12 @@
       ],
       "@app/categories/*": [
         "libs/categories/src/*"
+      ],
+      "@app/friendships": [
+        "libs/friendships/src"
+      ],
+      "@app/friendships/*": [
+        "libs/friendships/src/*"
       ]
     }
   }

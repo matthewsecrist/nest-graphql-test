@@ -45,6 +45,8 @@ type Query {
 
 type User {
   email: String!
+  followers: [User!]!
+  following: [User!]!
   id: ID!
   posts: [Post!]!
   username: String!

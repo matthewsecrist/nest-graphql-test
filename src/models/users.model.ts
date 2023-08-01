@@ -14,4 +14,10 @@ export class User {
 
   @Field(() => [Post])
   posts: Post[];
+
+  @Field(() => [User])
+  following: User[];
+
+  @Field(() => [User])
+  followers: User[];
 }
