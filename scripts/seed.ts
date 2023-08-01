@@ -1,10 +1,4 @@
-import {
-  PrismaClient,
-  User,
-  Category,
-  Post,
-  Friendships,
-} from '@prisma/client';
+import { PrismaClient, User, Category, Post } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
