@@ -10,9 +10,10 @@ import { UsersService } from '@app/users';
 import { PostsService } from '@app/posts';
 import { Post } from '../models/post.model';
 import { NotFoundException } from '@nestjs/common';
-import { Category } from 'src/models/categories.model';
+import { Category } from '../models/categories.model';
 import { CategoriesService } from '@app/categories';
-import { User } from 'src/models/users.model';
+import { User } from '../models/users.model';
+import { Subscription } from '../models/subscriptions.model';
 
 @Resolver(() => Post)
 export class PostsResolver {
@@ -42,13 +43,23 @@ export class PostsResolver {
 
   @ResolveField('categories', () => [Category])
   async categories(@Parent() post: Post) {
-    console.log('fetch categories for post: ', post.id);
     return this.categoriesService.fetchCategoriesByPostId(post.id);
   }
 
   @ResolveField('author', () => User)
   async author(@Parent() post: Post) {
     return this.usersService.getById(post.authorId);
+  }
+
+  @ResolveField('subscriptions', () => [Subscription])
+  async subscriptions(@Parent() post: Post) {
+    return [
+      {
+        id: 1,
+        foo: 'asdfasdf',
+        posts: await this.postsService.findAll(),
+      },
+    ];
   }
 
   @Mutation(() => Post)

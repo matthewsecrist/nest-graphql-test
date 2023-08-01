@@ -31,6 +31,7 @@ type Post {
   categories: [Category!]!
   id: ID!
   published: Boolean!
+  subscriptions: [Subscription!]!
   votes: Float!
 }
 
@@ -39,8 +40,15 @@ type Query {
   category(categoryId: String!): Category!
   post(id: String!): Post!
   posts(authorId: String): [Post!]!
+  subscriptions: [Subscription!]!
   user(email: String, id: String, username: String): User!
   users: [User!]!
+}
+
+type Subscription {
+  foo: String!
+  id: ID!
+  posts: [Post!]!
 }
 
 type User {

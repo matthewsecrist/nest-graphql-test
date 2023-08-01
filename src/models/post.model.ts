@@ -1,6 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { User } from './users.model';
 import { Category } from './categories.model';
+import { Subscription } from './subscriptions.model';
 
 @ObjectType()
 export class Post {
@@ -24,4 +25,7 @@ export class Post {
 
   @Field(() => [Category])
   categories: Category[];
+
+  @Field(() => [Subscription])
+  subscriptions: Subscription[];
 }

@@ -8,8 +8,8 @@ import {
   Parent,
   ResolveField,
 } from '@nestjs/graphql';
-import { Category } from 'src/models/categories.model';
-import { Post } from 'src/models/post.model';
+import { Category } from '../models/categories.model';
+import { Post } from '../models/post.model';
 import { AssociateCategoryResponseDTO } from './dto/associate-category.response.dto';
 
 @Resolver(() => Category)
